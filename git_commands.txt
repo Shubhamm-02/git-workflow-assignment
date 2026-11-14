@@ -1,0 +1,119 @@
+Git Commands Used in the Assignment
+Name: Shubham Shah    Roll No: 2024eb02321
+Repo: https://github.com/Shubhamm-02/git-workflow-assignment
+
+STEP 1: LOCAL REPOSITORY SETUP
+
+1. git init -b main
+   Creates a new empty git repo in the current folder. The -b main option names the first branch "main".
+
+2. git config user.name "Shubham Shah"
+   Sets the author name that gets saved with every commit in this repo.
+
+3. git config user.email "<my github noreply email>"
+   Sets the author email for commits in this repo.
+
+4. git status
+   Shows which files are untracked, modified or staged and which branch I am on.
+
+STEP 2: GIT WORKFLOW
+
+5. git add index.html about.html
+   Moves the two files to the staging area so they are included in the next commit.
+
+6. git commit -m "Initial commit: add index and about pages"
+   Saves the staged files as the first snapshot of the project with a message.
+
+7. git diff
+   Shows line by line changes in the working folder that are not staged yet. I used it after editing index.html.
+
+8. git commit -m "Update index.html with course details"
+   Second commit, records the change made to index.html.
+
+9. git branch feature
+   Creates a new branch called feature starting from the current commit.
+
+10. git branch
+    Lists local branches. The * marks the branch currently checked out.
+
+11. git checkout feature
+    Switches the working folder to the feature branch.
+
+12. git commit -m "Add roll number to about page"
+    Commit made on the feature branch after editing about.html (after git add about.html).
+
+13. git checkout main
+    Switches back to the main branch. The change made on feature is not visible here yet.
+
+14. git merge --no-ff feature -m "Merge branch 'feature' into main"
+    Merges feature into main. --no-ff forces a merge commit so the branch shows up clearly in the history.
+
+15. git log --oneline --graph --all
+    Prints the commit history of all branches in short form with a text graph of branching and merging.
+
+16. git log --stat -n 2
+    Shows full details (hash, author, date, message) of the last 2 commits along with files changed.
+
+STEP 3: .GITIGNORE
+
+17. cat .gitignore
+    Displays the ignore rules: *.log for log files and temp/ for the temp folder.
+
+18. git add .gitignore
+    Stages the .gitignore file.
+
+19. git commit -m "Add .gitignore for log files and temp folder"
+    Commits the .gitignore so the rules are part of the repo.
+
+20. git status --ignored
+    Lists ignored files too. debug.log and temp/ appear under "Ignored files".
+
+21. git check-ignore -v debug.log temp/notes.txt
+    Tells which rule and which line of .gitignore is ignoring each file.
+
+STEP 4: UNDO OPERATION
+
+22. git commit -m "Add test comment to index.html"
+    Extra commit made only to test the undo operation.
+
+23. git log --oneline -n 3
+    Shows the last 3 commits in one line each.
+
+24. git revert HEAD --no-edit
+    Undoes the last commit by creating a new commit with the opposite changes. History is kept, so it is safe for a repo that is pushed to GitHub. --no-edit uses the default message.
+
+25. tail -n 2 index.html
+    (shell command) Used before and after the revert to confirm the test line was removed from the file.
+
+   Note: git reset --hard HEAD~1 can also undo a commit, but it deletes the commit from history. I used revert because the repo is shared on GitHub and the undo should be visible there.
+
+STEP 5: GITHUB INTEGRATION
+
+26. gh repo create git-workflow-assignment --public
+    Creates a new public repository on my GitHub account using the GitHub CLI (it can also be done from the GitHub website).
+
+27. git remote add origin https://github.com/Shubhamm-02/git-workflow-assignment.git
+    Links the local repo to the GitHub repo and names that remote "origin".
+
+28. git remote -v
+    Shows the fetch and push URLs of the remote to confirm the link.
+
+29. git push -u origin main
+    Uploads the main branch with all its commits to GitHub. -u sets origin/main as the upstream so later just "git push" works.
+
+30. git push -u origin feature
+    Uploads the feature branch also, so the branch is visible on GitHub.
+
+31. git branch -a
+    Lists local and remote tracking branches.
+
+STEP 6: COMMAND FILE
+
+32. git add git_commands.txt
+    Stages this file.
+
+33. git commit -m "Add git_commands.txt with command explanations"
+    Commits the command documentation file.
+
+34. git push
+    Pushes the new commit to GitHub (upstream already set in step 29).
