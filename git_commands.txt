@@ -117,3 +117,15 @@ STEP 6: COMMAND FILE
 
 34. git push
     Pushes the new commit to GitHub (upstream already set in step 29).
+
+EXTRA: SMALL FIX AFTER STEP 6
+
+35. git diff
+    Checked the change before committing. I had written the wrong course name in index.html, so I corrected it.
+
+36. git commit -am "Fix course name in index.html"
+    -a stages all modified tracked files and commits them in one go (index.html and git_commands.txt here).
+
+37. git push
+    Pushes the fix to GitHub.
+
